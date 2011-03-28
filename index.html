@@ -5,28 +5,12 @@
 
 	<body>
 		<p>Long polling test.</p>
-		<p><textarea id="output">loading...</textarea></p>
-		<p><button id="increment">Increment</button> <button id="reset">Reset</button></p>
+		<p><textarea id="output">loading...</textarea><br/>
+			<input id="channel" type="text" value="foo" /></p>
+		<p><button id="subscribe">Subscribe</button> <button id="increment">Increment</button> <button id="reset">Reset</button></p>
 	</body>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
-	<script type="text/javascript">
-		$(function()
-		{
-			var output = $('#output');
-			var socket = new io.Socket();
-			socket.connect();
-			socket.on('message', function(data){
-				output.val(data.count);
-			});
-			$('#increment').click(function()
-			{
-				socket.send('increment');
-			});
-			$('#reset').click(function()
-			{
-				socket.send('reset');
-			});
-		});
-	</script>
+	<script src="/util/json.js"></script>
+	<script src="/util/client.js"></script>
 </html>
